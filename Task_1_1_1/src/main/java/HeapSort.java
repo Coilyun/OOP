@@ -2,6 +2,7 @@ public class HeapSort {
     public static void heapSort(int[] array) {
         int n = array.length;
 
+
         // Построение кучи (перегруппируем массив)
         for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(array, n, i);

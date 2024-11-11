@@ -14,22 +14,15 @@ public class Card {
 
     // Метод для вычисления значения карты
     private int calculateValue(String rank) {
-        switch (rank) {
-            case "A":
-                return 11;  // Туз
-            case "K":
-            case "Q":
-            case "J":
-                return 10;  // Валет, дама, король
-            default:
-                try {
-                    return Integer.parseInt(rank);  // Числовые карты
-                } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException("Неверный ранг карты: " + rank, e);
-                }
+        if (rank.equals("A")) {
+            return 11;  // Туз
+        } else if (rank.equals("K") || rank.equals("Q") || rank.equals("J")) {
+            return 10;  // Валет, дама, король
+        } else {
+            // Числовые карты от 1 до 10
+            return Integer.parseInt(rank);  
         }
     }
-    
 
     public String getRank() {
         return rank;

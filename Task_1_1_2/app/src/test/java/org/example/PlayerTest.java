@@ -10,7 +10,7 @@ public class PlayerTest {
         // Создаем игрока с именем "Игрок"
         Player player = new Player("Игрок");
         // Создаем карту
-        Card card = new Card("Червы", "8");
+        Card card = new Card("8", "Червы");  // Указываем карту с номером
         // Добавляем карту игроку
         player.receiveCard(card);
         
@@ -25,8 +25,8 @@ public class PlayerTest {
         // Создаем игрока с именем "Игрок"
         Player player = new Player("Игрок");
         // Добавляем карты игроку
-        player.receiveCard(new Card("Пики", "Туз"));
-        player.receiveCard(new Card("Червы", "8"));
+        player.receiveCard(new Card("A", "Пики"));
+        player.receiveCard(new Card("8", "Червы"));
         
         // Проверяем, что сумма очков правильная
         assertEquals(19, player.getScore());
@@ -37,9 +37,9 @@ public class PlayerTest {
         // Создаем игрока с именем "Игрок"
         Player player = new Player("Игрок");
         // Добавляем карты игроку
-        player.receiveCard(new Card("Пики", "Туз"));
-        player.receiveCard(new Card("Червы", "8"));
-        player.receiveCard(new Card("Трефы", "5"));
+        player.receiveCard(new Card("A", "Пики"));
+        player.receiveCard(new Card("8", "Червы"));
+        player.receiveCard(new Card("5", "Трефы"));
         
         // Проверяем, что сумма очков правильная (Туз должен быть равен 1)
         assertEquals(14, player.getScore());

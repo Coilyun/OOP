@@ -6,7 +6,7 @@ import java.util.List;
 public class Player {
     private String name;
     private List<Card> hand;  // Рука игрока (список карт)
-    private int score;
+    int score;
 
     // Конструктор
     public Player(String name) {

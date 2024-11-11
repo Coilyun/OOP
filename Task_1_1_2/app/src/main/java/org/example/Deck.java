@@ -1,55 +1,46 @@
 package org.example;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Deck {
     private List<Card> cards;
-    private int currentCardIndex;
 
     public Deck() {
-        this.cards = new ArrayList<>();
-        this.currentCardIndex = 0;
-        initializeDeck();
-    }
-
-    // Инициализация колоды
-    private void initializeDeck() {
-        String[] suits = {"Пики", "Червы", "Бубны", "Трефы"};
-        String[] values = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Валет", "Дама", "Король", "Туз"};
+        cards = new LinkedList<>();
+        // Инициализация колоды
+        String[] suits = {"Пики", "Червы", "Трефы", "Бубны"};
+        String[] ranks = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
         
+        // Создаем колоду
         for (String suit : suits) {
-            for (String value : values) {
-                cards.add(new Card(value, suit));
+            for (String rank : ranks) {
+                cards.add(new Card(rank, suit));
             }
         }
-        shuffleDeck();
+        shuffleDeck();  // Перетасовываем колоду
     }
 
-    // Перемешивание колоды
+    // Метод для тасования колоды
     public void shuffleDeck() {
         Collections.shuffle(cards);
-        currentCardIndex = 0;  // Сбрасываем индекс после перемешивания
     }
 
-    // Вытаскивание карты из колоды
+    // Метод для извлечения карты из колоды
     public Card drawCard() {
-        if (currentCardIndex < cards.size()) {
-            return cards.get(currentCardIndex++);
-        } else {
-            return null; // Если карты закончились
+        if (!cards.isEmpty()) {
+            return cards.remove(0);  // Берем верхнюю карту из колоды
         }
+        return null;  // Если карты закончились, возвращаем null
     }
 
-    // Метод для получения количества оставшихся карт
-    public int remainingCards() {
-        return cards.size() - currentCardIndex;
-    }
-
-    // Получить всю колоду карт (например, для тестирования или отладки)
+    // Метод для получения текущих карт в колоде
     public List<Card> getCards() {
-        return cards;
+        return cards;  // Возвращаем список карт
+    }
+
+    public int remainingCards() {
+        return cards.size();
     }
 }
-

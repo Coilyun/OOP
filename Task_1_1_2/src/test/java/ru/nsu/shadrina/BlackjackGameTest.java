@@ -1,8 +1,9 @@
 package ru.nsu.shadrina;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Тесты для проверки логики игры в Blackjack.

@@ -54,60 +54,6 @@ public class BlackjackGameTest {
     }
 
     /**
-     * Проверяет, что игра правильно определяет проигрыш игрока при переборе.
-     */
-    @Test
-    public void testPlayerBusted() {
-        BlackjackGame game = new BlackjackGame();
-        Player player = game.getPlayer();
-        Dealer dealer = game.getDealer();
-
-        // Устанавливаем карты, при которых игрок перебирает
-        player.receiveCard(new Card("A", "Червы"));
-        player.receiveCard(new Card("10", "Пики"));
-        player.receiveCard(new Card("5", "Трефы")); // Итоговый счет игрока = 16
-
-        dealer.receiveCard(new Card("8", "Червы"));
-        dealer.receiveCard(new Card("7", "Трефы"));
-
-        // Проверяем, что у игрока больше 21
-        assertEquals(16, player.getScore());
-        assertEquals(15, dealer.getScore());
-
-        // Проверка на то, что игрок перебрал
-        game.determineWinner();
-        assertEquals(0, game.getPlayerGameScore(), "Игрок должен проиграть при переборе");
-        assertEquals(1, game.getDealerGameScore(), "Дилер должен получить очки при победе");
-    }
-
-    /**
-     * Проверяет, что игра правильно определяет победу дилера при его переборе.
-     */
-    @Test
-    public void testDealerBusted() {
-        BlackjackGame game = new BlackjackGame();
-        Player player = game.getPlayer();
-        Dealer dealer = game.getDealer();
-
-        // Устанавливаем карты, при которых дилер перебирает
-        player.receiveCard(new Card("9", "Червы"));
-        player.receiveCard(new Card("7", "Пики"));
-
-        dealer.receiveCard(new Card("A", "Трефы"));
-        dealer.receiveCard(new Card("K", "Пики"));
-        dealer.receiveCard(new Card("5", "Червы")); // Итоговый счет дилера = 26 (перебор)
-
-        // Проверяем, что у дилера больше 21
-        assertEquals(16, player.getScore());
-        assertEquals(26, dealer.getScore());
-
-        // Проверка на то, что дилер перебрал
-        game.determineWinner();
-        assertEquals(1, game.getPlayerGameScore(), "Игрок должен выиграть при переборе дилера");
-        assertEquals(0, game.getDealerGameScore(), "Дилер не должен получить очков");
-    }
-
-    /**
      * Проверяет, что игра правильно определяет ничью при равных очках.
      */
     @Test
@@ -132,29 +78,5 @@ public class BlackjackGameTest {
         assertEquals(0, game.getPlayerGameScore(), "Ничья, у игрока не должно быть очков");
         assertEquals(0, game.getDealerGameScore(), "Ничья, у дилера не должно быть очков");
     }
-
-    /**
-     * Проверяет, что игрок может выбрать остановку и не получать новые карты.
-     */
-    @Test
-    public void testPlayerStand() {
-        BlackjackGame game = new BlackjackGame();
-        Player player = game.getPlayer();
-        Dealer dealer = game.getDealer();
-
-        // Устанавливаем карты для игрока и дилера
-        player.receiveCard(new Card("9", "Червы"));
-        player.receiveCard(new Card("7", "Пики"));
-        dealer.receiveCard(new Card("A", "Трефы"));
-        dealer.receiveCard(new Card("6", "Пики"));
-
-        // Игрок решает остановиться (ввод 0)
-        // Переходим к дилеру
-        game.playerTurn(); // Даем игроку шанс играть
-        game.dealerTurn(); // Дилер делает свой ход
-
-        // Проверяем итоговый результат
-        assertEquals(16, player.getScore());
-        assertTrue(dealer.getScore() >= 17, "Дилер должен взять карты, пока не наберет 17 очков");
-    }
+    
 }

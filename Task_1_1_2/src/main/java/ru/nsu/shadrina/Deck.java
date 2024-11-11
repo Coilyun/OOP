@@ -43,10 +43,12 @@ public class Deck {
      * @return карта из колоды или null, если карты закончились
      */
     public Card drawCard() {
-        if (!cards.isEmpty()) {
-            return cards.remove(0); // Берем верхнюю карту из колоды
+        if (cards.isEmpty()) {
+            // Если колода пуста, возвращаем null или можем выбросить исключение
+            System.out.println("Колода пуста!");
+            return null;
         }
-        return null;
+        return cards.remove(0); // Берем верхнюю карту из колоды
     }
 
     /**

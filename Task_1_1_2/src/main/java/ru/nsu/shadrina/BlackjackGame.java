@@ -102,6 +102,10 @@ public class BlackjackGame {
         round++;
     }
 
+    public String getName() {
+        return player.getName();  // Предположим, что у Player есть метод getName()
+    }    
+
     /**
      * Раздача карт для начала раунда.
      * Игрок и дилер получают по две карты из колоды.
@@ -122,7 +126,7 @@ public class BlackjackGame {
     /**
      * Ход игрока, где он может выбрать взять карту или остановиться.
      */
-    private void playerTurn() {
+    public void playerTurn() {
         Scanner scanner = new Scanner(System.in);
         try {
             while (true) {
@@ -157,7 +161,7 @@ public class BlackjackGame {
     /**
      * Ход дилера, где он берет карты до достижения 17 очков или более.
      */
-    private void dealerTurn() {
+    public void dealerTurn() {
         System.out.println("Ход дилера");
         dealer.receiveCard(deck.drawCard());
         System.out.println("Карты дилера: " + dealer.getHand() + " > " + dealer.getScore());
@@ -171,11 +175,15 @@ public class BlackjackGame {
      * Определяет победителя раунда и обновляет итоговые очки игрока и дилера.
      */
     public void determineWinner() {
-        if (player.getScore() > 21) {
-            System.out.println("Вы проиграли!");
+        if (player.getScore() > 21 && dealer.getScore() > 21) {
+            System.out.println("Ничья! Оба игрока перебрали.");
+            playerScore = 0;
+            dealerScore = 0;
+        } else if (player.getScore() > 21) {
+            System.out.println("Вы проиграли! Перебрали.");
             playerScore = 0;
             dealerScore = 1;
-        } else if (dealer.getScore() > 21) {
+        } else if (dealer.isBusted()) {  // Используем метод isBusted() для проверки перебора у дилера
             System.out.println("Дилер перебрал, вы выиграли!");
             playerScore = 1;
             dealerScore = 0;

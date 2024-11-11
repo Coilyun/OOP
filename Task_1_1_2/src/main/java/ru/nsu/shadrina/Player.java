@@ -48,7 +48,6 @@ public class Player {
     public int getScore() {
         int total = 0;
         int aceCount = 0;
-
         // Проходим по всем картам в руке игрока
         for (Card card : hand) {
             total += card.getValue();

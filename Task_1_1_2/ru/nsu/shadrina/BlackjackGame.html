@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -184,54 +184,73 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dealerTurn()">dealerTurn</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Ход дилера, где он берет карты до достижения 17 очков или более.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#determineWinner()">determineWinner</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Определяет победителя раунда и обновляет итоговые очки игрока и дилера.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="Dealer.html" title="class in ru.nsu.shadrina">Dealer</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDealer()">getDealer</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Получить объект дилера.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDealerGameScore()">getDealerGameScore</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Получить итоговый счет дилера после раунда.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDealerScore()">getDealerScore</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Получить текущий счет дилера.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getName()">getName</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="Player.html" title="class in ru.nsu.shadrina">Player</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPlayer()">getPlayer</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Получить объект игрока.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPlayerGameScore()">getPlayerGameScore</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Получить итоговый счет игрока после раунда.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPlayerScore()">getPlayerScore</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Получить текущий счет игрока.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#playerTurn()">playerTurn</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Ход игрока, где он может выбрать взять карту или остановиться.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#playRound()">playRound</a></span>()</code></th>
 <td class="colLast">
@@ -390,6 +409,35 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;playRound()</pre>
 <div class="block">Запустить раунд игры.
  Включает раздачу карт, ход игрока и ход дилера, а затем определяет победителя.</div>
+</li>
+</ul>
+<a id="getName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getName</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getName()</pre>
+</li>
+</ul>
+<a id="playerTurn()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>playerTurn</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;playerTurn()</pre>
+<div class="block">Ход игрока, где он может выбрать взять карту или остановиться.</div>
+</li>
+</ul>
+<a id="dealerTurn()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>dealerTurn</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;dealerTurn()</pre>
+<div class="block">Ход дилера, где он берет карты до достижения 17 очков или более.</div>
 </li>
 </ul>
 <a id="determineWinner()">

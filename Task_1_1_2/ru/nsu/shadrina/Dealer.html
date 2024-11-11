@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -192,27 +192,34 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isBusted()">isBusted</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Проверяет, есть ли перебор у дилера.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#play(ru.nsu.shadrina.Deck)">play</a></span>&#8203;(<a href="Deck.html" title="class in ru.nsu.shadrina">Deck</a>&nbsp;deck)</code></th>
 <td class="colLast">
 <div class="block">Игровой процесс дилера.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#receiveCard(ru.nsu.shadrina.Card)">receiveCard</a></span>&#8203;(<a href="Card.html" title="class in ru.nsu.shadrina">Card</a>&nbsp;card)</code></th>
 <td class="colLast">
 <div class="block">Добавляет карту в руку дилера.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#reset()">reset</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Сбрасывает руку дилера, очищая карты и сбрасывая очки.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">
@@ -293,6 +300,20 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
+<a id="isBusted()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isBusted</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;isBusted()</pre>
+<div class="block">Проверяет, есть ли перебор у дилера.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true, если у дилера перебор (больше 21 очков)</dd>
+</dl>
+</li>
+</ul>
 <a id="receiveCard(ru.nsu.shadrina.Card)">
 <!--   -->
 </a>
@@ -325,7 +346,8 @@ extends java.lang.Object</pre>
 <h4>play</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;play&#8203;(<a href="Deck.html" title="class in ru.nsu.shadrina">Deck</a>&nbsp;deck)</pre>
 <div class="block">Игровой процесс дилера. Дилер берет карты до тех пор,
- пока сумма очков не станет равна или больше 17.</div>
+ пока сумма очков не станет равна или больше 17. Если сумма
+ очков превышает 21, то у дилера перебор.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>deck</code> - колода, из которой дилер берет карты</dd>

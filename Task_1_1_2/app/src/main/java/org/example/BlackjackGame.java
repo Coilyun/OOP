@@ -76,26 +76,32 @@ public class BlackjackGame {
 
     // Ход игрока
     private void playerTurn() {
-        Scanner scanner = new Scanner(System.in); //  Объект для чтения ввода 
+        Scanner scanner = new Scanner(System.in);
         try {
             while (true) {
                 System.out.println("Ваш ход");
                 System.out.println("Введите “1”, чтобы взять карту, и “0”, чтобы остановиться");
-                int choice = scanner.nextInt(); //  Сканируем вводимое пользователем
-                if (choice == 1) {
-                    player.receiveCard(deck.drawCard()); //  Берем карту
-                    System.out.println("Вы открыли карту: " + player.getHand().get(player.getHand().size() - 1));
-                    System.out.println("Ваши карты: " + player.getHand() + " > " + player.getScore());
-                    if (player.getScore() > 21) { //  Проверка на проигрыш
-                        System.out.println("Вы перебрали! Ваши очки: " + player.getScore());
-                        break; //  Выходим, если перебрали карт
+                if (scanner.hasNextInt()) {
+                    int choice = scanner.nextInt();
+                    if (choice == 1) {
+                        player.receiveCard(deck.drawCard());
+                        System.out.println("Вы открыли карту: " + player.getHand().get(player.getHand().size() - 1));
+                        System.out.println("Ваши карты: " + player.getHand() + " > " + player.getScore());
+                        if (player.getScore() > 21) {
+                            System.out.println("Вы перебрали! Ваши очки: " + player.getScore());
+                            break;
+                        }
+                    } else if (choice == 0) {
+                        break;
                     }
-                } else if (choice == 0) {
-                    break; //  Если игрок останавливается
+                } else {
+                    // Если ввод не является числом, продолжаем запрашивать ввод
+                    System.out.println("Введите правильное число (1 или 0).");
+                    scanner.next();  // Пропускаем неправильный ввод
                 }
             }
         } finally {
-            scanner.close(); //  Закрываем 
+            scanner.close();
         }
     }
 

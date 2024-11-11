@@ -1,9 +1,9 @@
 package org.example;
 
 public class Card {
-    private final String rank;
-    private final String suit;
-    private final int value;
+    private final String rank; //  Номинал карты
+    private final String suit; //  масть
+    private final int value;  //  Стоимость карты
 
     // Конструктор карты
     public Card(String rank, String suit) {
@@ -23,19 +23,20 @@ public class Card {
             return Integer.parseInt(rank);  
         }
     }
-
+    // Получаем номинал  
     public String getRank() {
         return rank;
     }
-
+    //  Получаем масть
     public String getSuit() {
         return suit;
     }
-
+    //  Получаем стоимость
     public int getValue() {
         return value;
     }
-
+   
+    // Переписываем 
     @Override
     public String toString() {
         return rank + " " + suit;

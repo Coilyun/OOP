@@ -1,80 +1,127 @@
 package org.example;
 
 import java.util.Scanner;
-    
 
-
+/**
+ * Класс для моделирования игры Blackjack (Блэкджек) между игроком и дилером.
+ */
 public class BlackjackGame {
     private final Deck deck; // Колода карт
-    private final Player player; //  Игрок
-    private final Dealer dealer; //  Дилер
-    private int round;  //  Номер раунда
-    private int playerScore; //  Счет игрока итоговый
-    private int dealerScore; //  Счет Дилера итоговый
+    private final Player player; // Игрок
+    private final Dealer dealer; // Дилер
+    private int round; // Номер раунда
+    private int playerScore; // Итоговый счет игрока
+    private int dealerScore; // Итоговый счет дилера
 
-     //  Конструктор игры, где задаем имя игрока
+    /**
+     * Конструктор игры BlackjackGame.
+     *
+     * @param playerName Имя игрока.
+     */
     public BlackjackGame(String playerName) {
-        this.deck = new Deck(); //  Инициализируем колоду
-        this.player = new Player(playerName); //  Инициализируем игрока
-        this.dealer = new Dealer(); //  Инициализируем дилера
-        this.round = 1; //  Начинаем с 1 раунда
-        this.playerScore = 0; //  Начальный счет игрока
-        this.dealerScore = 0; //  Начальный счет дилера
+        this.deck = new Deck(); // Инициализация колоды карт
+        this.player = new Player(playerName); // Инициализация игрока
+        this.dealer = new Dealer(); // Инициализация дилера
+        this.round = 1; // Начальный номер раунда
+        this.playerScore = 0; // Начальный счет игрока
+        this.dealerScore = 0; // Начальный счет дилера
     }
 
-     //  Если не задали имя игрока
+    /**
+     * Конструктор игры по умолчанию.
+     * Создает игрока с именем "Игрок".
+     */
     public BlackjackGame() {
         this("Игрок");
     }
 
-    // Методы для получения очков игрока и дилера
+    /**
+     * Получить текущий счет игрока.
+     *
+     * @return Счет игрока.
+     */
     public int getPlayerScore() {
         return player.getScore();
     }
 
+    /**
+     * Получить текущий счет дилера.
+     *
+     * @return Счет дилера.
+     */
     public int getDealerScore() {
         return dealer.getScore();
     }
-    // Методы получения игрока и диллера 
+
+    /**
+     * Получить объект игрока.
+     *
+     * @return Объект Player.
+     */
     public Player getPlayer() {
         return player;
     }
-     
+
+    /**
+     * Получить объект дилера.
+     *
+     * @return Объект Dealer.
+     */
     public Dealer getDealer() {
         return dealer;
     }
-    //  Получаем счеты по итогам игры
+
+    /**
+     * Получить итоговый счет игрока после раунда.
+     *
+     * @return Итоговый счет игрока.
+     */
     public int getPlayerGameScore() {
         return playerScore;
     }
 
+    /**
+     * Получить итоговый счет дилера после раунда.
+     *
+     * @return Итоговый счет дилера.
+     */
     public int getDealerGameScore() {
         return dealerScore;
     }
 
-    // Начало игры
+    /**
+     * Запустить раунд игры.
+     * Включает раздачу карт, ход игрока и ход дилера, а затем определяет победителя.
+     */
     public void playRound() {
         System.out.println("Раунд " + round);
         startRound();
         playerTurn();
         dealerTurn();
-        determineWinner(); //  Определяем победителя раунда
+        determineWinner(); // Определяем победителя раунда
         round++;
     }
 
-    // Раздача карт
+    /**
+     * Раздача карт для начала раунда.
+     * Игрок и дилер получают по две карты из колоды.
+     */
     private void startRound() {
-         //  Рисуем по 2 карты игроку и дилеру
         dealer.receiveCard(deck.drawCard());
         dealer.receiveCard(deck.drawCard());
         player.receiveCard(deck.drawCard());
         player.receiveCard(deck.drawCard());
+        
         System.out.println("Дилер раздал карты");
-        System.out.println(player.getName() + ", ваши карты: " + player.getHand() + " > " + player.getScore());
-        System.out.println("Карты дилера: " + dealer.getHand().get(0) + " и <закрытая карта>");
+        System.out.println(player.getName() + ", ваши карты: " 
+            + player.getHand() + " > " + player.getScore());
+        System.out.println("Карты дилера: " 
+            + dealer.getHand().get(0) + " и <закрытая карта>");
     }
 
-    // Ход игрока
+    /**
+     * Ход игрока, где он может выбрать взять карту или остановиться.
+     */
     private void playerTurn() {
         Scanner scanner = new Scanner(System.in);
         try {
@@ -85,8 +132,11 @@ public class BlackjackGame {
                     int choice = scanner.nextInt();
                     if (choice == 1) {
                         player.receiveCard(deck.drawCard());
-                        System.out.println("Вы открыли карту: " + player.getHand().get(player.getHand().size() - 1));
+
+                        System.out.println("Вы открыли карту: " + 
+                            player.getHand().get(player.getHand().size() - 1));
                         System.out.println("Ваши карты: " + player.getHand() + " > " + player.getScore());
+                        
                         if (player.getScore() > 21) {
                             System.out.println("Вы перебрали! Ваши очки: " + player.getScore());
                             break;
@@ -95,9 +145,8 @@ public class BlackjackGame {
                         break;
                     }
                 } else {
-                    // Если ввод не является числом, продолжаем запрашивать ввод
                     System.out.println("Введите правильное число (1 или 0).");
-                    scanner.next();  // Пропускаем неправильный ввод
+                    scanner.next(); // Пропускаем неверный ввод
                 }
             }
         } finally {
@@ -105,17 +154,22 @@ public class BlackjackGame {
         }
     }
 
-    // Ход дилера
+    /**
+     * Ход дилера, где он берет карты до достижения 17 очков или более.
+     */
     private void dealerTurn() {
         System.out.println("Ход дилера");
         dealer.receiveCard(deck.drawCard());
         System.out.println("Карты дилера: " + dealer.getHand() + " > " + dealer.getScore());
-        dealer.play(deck); //  Берет карты пока не дойдет до 17 и больше
-         //  Печатаем карты диллера
+        
+        dealer.play(deck); // Дилер добирает карты пока его счет не достигнет 17 и более
+        
         System.out.println("Карты дилера: " + dealer.getHand() + " > " + dealer.getScore());
     }
 
-    // Определение победителя
+    /**
+     * Определяет победителя раунда и обновляет итоговые очки игрока и дилера.
+     */
     public void determineWinner() {
         if (player.getScore() > 21) {
             System.out.println("Вы проиграли!");

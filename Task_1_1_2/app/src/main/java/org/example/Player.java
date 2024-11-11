@@ -3,29 +3,49 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс, представляющий игрока в игре Blackjack.
+ * Содержит информацию о руке игрока, его имени и текущем счете.
+ */
 public class Player {
-    private String name;
-    private List<Card> hand;  // Рука игрока (список карт)
-    int score;
+    private String name;        // Имя игрока
+    private List<Card> hand;    // Рука игрока (список карт)
+    int score;                  // Текущий счет игрока
 
-    // Конструктор
+    /**
+     * Конструктор игрока.
+     *
+     * @param name имя игрока
+     */
     public Player(String name) {
         this.name = name;
         this.hand = new ArrayList<>();
         this.score = 0;
     }
 
-    // Метод для получения имени игрока
+    /**
+     * Возвращает имя игрока.
+     *
+     * @return имя игрока
+     */
     public String getName() {
         return name;
     }
 
-    // Метод для получения карт игрока
+    /**
+     * Возвращает текущую руку игрока.
+     *
+     * @return список карт в руке игрока
+     */
     public List<Card> getHand() {
         return hand;
     }
 
-    // Метод для получения очков игрока
+    /**
+     * Вычисляет и возвращает текущий счет игрока с учетом правила для туза.
+     *
+     * @return текущий счет игрока
+     */
     public int getScore() {
         int total = 0;
         int aceCount = 0;
@@ -47,17 +67,28 @@ public class Player {
         return total;
     }
 
-    // Метод для добавления карты в руку игрока
+    /**
+     * Добавляет карту в руку игрока.
+     *
+     * @param card карта для добавления в руку
+     */
     public void receiveCard(Card card) {
         hand.add(card);  // Добавляем карту в руку
     }
 
-    // Метод для сброса руки игрока (например, для начала нового раунда)
+    /**
+     * Сбрасывает руку игрока и счет (используется для начала нового раунда).
+     */
     public void reset() {
         hand.clear();
         score = 0;
     }
 
+    /**
+     * Возвращает имя игрока как строку.
+     *
+     * @return строковое представление имени игрока
+     */
     @Override
     public String toString() {
         return name;

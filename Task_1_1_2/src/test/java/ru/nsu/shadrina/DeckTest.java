@@ -1,8 +1,9 @@
-package org.example;
+package ru.nsu.shadrina;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,7 +46,7 @@ public class DeckTest {
     @Test
     public void testDeckShuffle() {
         Deck deck = new Deck();
-        List<Card> cardsBeforeShuffle = List.copyOf(deck.getCards());
+        List<Card> cardsBeforeShuffle = new ArrayList<>(deck.getCards());
         
         // Тасуем колоду
         deck.shuffleDeck();
@@ -56,4 +57,5 @@ public class DeckTest {
         assertNotEquals(cardsBeforeShuffle, cardsAfterShuffle, 
                         "Колода должна измениться после тасования");
     }
+
 }

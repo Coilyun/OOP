@@ -1,4 +1,4 @@
-package org.example;
+package ru.nsu.shadrina;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

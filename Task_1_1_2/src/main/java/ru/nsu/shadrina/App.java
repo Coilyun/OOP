@@ -1,4 +1,4 @@
-package org.example;
+package ru.nsu.shadrina;
 
 /**
  * Класс для запуска игры Blackjack.

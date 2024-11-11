@@ -1,4 +1,4 @@
-package org.example;
+package ru.nsu.shadrina;
 
 import java.util.Collections;
 import java.util.LinkedList;

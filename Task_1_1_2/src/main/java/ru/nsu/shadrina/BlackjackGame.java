@@ -137,8 +137,8 @@ public class BlackjackGame {
                     if (choice == 1) {
                         player.receiveCard(deck.drawCard());
 
-                        System.out.println("Вы открыли карту: " + 
-                            player.getHand().get(player.getHand().size() - 1));
+                        System.out.println("Вы открыли карту: " 
+                            + player.getHand().get(player.getHand().size() - 1));
                         System.out.println("Ваши карты: " + player.getHand() + " > " + player.getScore());
                         
                         if (player.getScore() > 21) {

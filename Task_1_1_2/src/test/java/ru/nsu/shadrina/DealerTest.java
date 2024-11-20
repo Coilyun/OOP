@@ -2,7 +2,7 @@ package ru.nsu.shadrina;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Тесты для проверки корректности поведения дилера в игре.

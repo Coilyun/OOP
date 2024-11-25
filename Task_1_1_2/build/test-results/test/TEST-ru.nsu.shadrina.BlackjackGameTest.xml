@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.nsu.shadrina.BlackjackGameTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-11-11T07:11:05" hostname="DESKTOP-D9QOF54" time="0.038">
+  <properties/>
+  <testcase name="testPlayerBlackjackWin()" classname="ru.nsu.shadrina.BlackjackGameTest" time="0.034"/>
+  <testcase name="testDraw()" classname="ru.nsu.shadrina.BlackjackGameTest" time="0.001"/>
+  <testcase name="testInitialDeal()" classname="ru.nsu.shadrina.BlackjackGameTest" time="0.0"/>
+  <system-out><![CDATA[Вы выиграли!
+Ничья!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

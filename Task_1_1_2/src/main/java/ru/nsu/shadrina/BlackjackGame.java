@@ -6,12 +6,12 @@ import java.util.Scanner;
  * Класс для моделирования игры Blackjack (Блэкджек) между игроком и дилером.
  */
 public class BlackjackGame {
-    private final Deck deck; // Колода карт
-    private final Player player; // Игрок
-    private final Dealer dealer; // Дилер
-    private int round; // Номер раунда
-    private int playerScore; // Итоговый счет игрока
-    private int dealerScore; // Итоговый счет дилера
+    private final Deck deck;
+    private final Player player; 
+    private final Dealer dealer; 
+    private int round; 
+    private int playerScore; 
+    private int dealerScore; 
 
     /**
      * Конструктор игры BlackjackGame.
@@ -19,12 +19,12 @@ public class BlackjackGame {
      * @param playerName Имя игрока.
      */
     public BlackjackGame(String playerName) {
-        this.deck = new Deck(); // Инициализация колоды карт
-        this.player = new Player(playerName); // Инициализация игрока
-        this.dealer = new Dealer(); // Инициализация дилера
-        this.round = 1; // Начальный номер раунда
-        this.playerScore = 0; // Начальный счет игрока
-        this.dealerScore = 0; // Начальный счет дилера
+        this.deck = new Deck(); 
+        this.player = new Player(playerName); 
+        this.dealer = new Dealer(); 
+        this.round = 1; 
+        this.playerScore = 0; 
+        this.dealerScore = 0; 
     }
 
     /**
@@ -98,12 +98,12 @@ public class BlackjackGame {
         startRound();
         playerTurn();
         dealerTurn();
-        determineWinner(); // Определяем победителя раунда
+        determineWinner();
         round++;
     }
 
     public String getName() {
-        return player.getName();  // Предположим, что у Player есть метод getName()
+        return player.getName();
     }    
 
     /**
@@ -139,10 +139,12 @@ public class BlackjackGame {
 
                         System.out.println("Вы открыли карту: " 
                             + player.getHand().get(player.getHand().size() - 1));
-                        System.out.println("Ваши карты: " + player.getHand() + " > " + player.getScore());
+                        System.out.println("Ваши карты: " + player.getHand() 
+                            + " > " + player.getScore());
                         
                         if (player.getScore() > 21) {
-                            System.out.println("Вы перебрали! Ваши очки: " + player.getScore());
+                            System.out.println("Вы перебрали! Ваши очки: " 
+                                + player.getScore());
                             break;
                         }
                     } else if (choice == 0) {
@@ -150,7 +152,7 @@ public class BlackjackGame {
                     }
                 } else {
                     System.out.println("Введите правильное число (1 или 0).");
-                    scanner.next(); // Пропускаем неверный ввод
+                    scanner.next();
                 }
             }
         } finally {
@@ -166,7 +168,7 @@ public class BlackjackGame {
         dealer.receiveCard(deck.drawCard());
         System.out.println("Карты дилера: " + dealer.getHand() + " > " + dealer.getScore());
         
-        dealer.play(deck); // Дилер добирает карты пока его счет не достигнет 17 и более
+        dealer.play(deck);
         
         System.out.println("Карты дилера: " + dealer.getHand() + " > " + dealer.getScore());
     }
@@ -183,7 +185,7 @@ public class BlackjackGame {
             System.out.println("Вы проиграли! Перебрали.");
             playerScore = 0;
             dealerScore = 1;
-        } else if (dealer.isBusted()) {  // Используем метод isBusted() для проверки перебора у дилера
+        } else if (dealer.isBusted()) {
             System.out.println("Дилер перебрал, вы выиграли!");
             playerScore = 1;
             dealerScore = 0;

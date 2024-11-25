@@ -13,7 +13,7 @@ public class App {
      * @param args аргументы командной строки (не используются)
      */
     public static void main(String[] args) {
-        BlackjackGame game = new BlackjackGame("Никита"); // Инициализируем игру с игроком "Никита"
-        game.playRound(); // Запускаем первый раунд
+        BlackjackGame game = new BlackjackGame("Никита"); 
+        game.playRound();
     }
 }

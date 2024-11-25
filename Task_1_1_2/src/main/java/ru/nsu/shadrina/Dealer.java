@@ -8,8 +8,8 @@ import java.util.List;
  * Дилер имеет руку карт и логику игры для набора очков.
  */
 public class Dealer {
-    private List<Card> hand; // Рука дилера
-    int score;       // Очки дилера
+    private List<Card> hand;
+    int score;
 
     /**
      * Конструктор для создания дилера с пустой рукой и нулевыми очками.
@@ -39,7 +39,6 @@ public class Dealer {
         int total = 0;
         int aceCount = 0;
 
-        // Проходим по всем картам в руке дилера и суммируем очки
         for (Card card : hand) {
             total += card.getValue();
             if ("A".equals(card.getRank())) {
@@ -47,9 +46,8 @@ public class Dealer {
             }
         }
 
-        // Преобразуем туз в 1, если сумма очков превышает 21
         while (total > 21 && aceCount > 0) {
-            total -= 10; // Меняем значение туза с 11 на 1
+            total -= 10;
             aceCount--;
         }
 
@@ -62,7 +60,7 @@ public class Dealer {
      * @return true, если у дилера перебор (больше 21 очков)
      */
     public boolean isBusted() {
-        return getScore() > 21; // Перебор, если сумма очков больше 21
+        return getScore() > 21;
     }
 
     /**
@@ -71,7 +69,7 @@ public class Dealer {
      * @param card карта, которую дилер получает
      */
     public void receiveCard(Card card) {
-        hand.add(card); // Добавляем карту в руку дилера
+        hand.add(card);
     }
 
     /**
@@ -90,11 +88,10 @@ public class Dealer {
      * @param deck колода, из которой дилер берет карты
      */
     public void play(Deck deck) {
-        while (getScore() < 17 && !isBusted()) { // Дилер берет карты, пока очки меньше 17
+        while (getScore() < 17 && !isBusted()) {
             receiveCard(deck.drawCard());
         }
 
-        // Проверка на перебор
         if (isBusted()) {
             System.out.println("Дилер перебрал! Общий счет: " + getScore());
         }

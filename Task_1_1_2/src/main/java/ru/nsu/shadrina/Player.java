@@ -7,9 +7,9 @@ import java.util.List;
  * Содержит информацию о руке игрока, его имени и текущем счете.
  */
 public class Player {
-    private String name;        // Имя игрока
-    private List<Card> hand;    // Рука игрока (список карт)
-    int score;                  // Текущий счет игрока
+    private String name;
+    private List<Card> hand;
+    int score;
 
     /**
      * Конструктор игрока.
@@ -48,7 +48,7 @@ public class Player {
     public int getScore() {
         int total = 0;
         int aceCount = 0;
-        // Проходим по всем картам в руке игрока
+
         for (Card card : hand) {
             total += card.getValue();
             if (card.getRank().equals("A")) {
@@ -56,9 +56,8 @@ public class Player {
             }
         }
 
-        // Преобразуем туз в 1, если сумма очков превышает 21
         while (total > 21 && aceCount > 0) {
-            total -= 10; // Меняем туз с 11 на 1
+            total -= 10;
             aceCount--;
         }
 
@@ -71,7 +70,7 @@ public class Player {
      * @param card карта для добавления в руку
      */
     public void receiveCard(Card card) {
-        hand.add(card);  // Добавляем карту в руку
+        hand.add(card);
     }
 
     /**

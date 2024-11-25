@@ -18,7 +18,6 @@ public class CardTest {
      */
     @Test
     public void testCardCreation() {
-        // Создание карты с королем
         Card card = new Card("K", "Пики");
         assertEquals("Пики", card.getSuit(), "Масть карты должна быть 'Пики'");
         assertEquals("K", card.getRank(), "Ранг карты должен быть 'K'");
@@ -30,7 +29,6 @@ public class CardTest {
      */
     @Test
     public void testToString() {
-        // Создание карты с дамой
         Card card = new Card("Q", "Червы");
         assertEquals("Q Червы", card.toString(), 
                      "Метод toString должен возвращать 'Q Червы'");
@@ -41,7 +39,6 @@ public class CardTest {
      */
     @Test
     public void testCardWithNumber() {
-        // Создание карты с числом
         Card card = new Card("2", "Трефы");
         assertEquals("Трефы", card.getSuit(), "Масть карты должна быть 'Трефы'");
         assertEquals("2", card.getRank(), "Ранг карты должен быть '2'");
@@ -53,7 +50,6 @@ public class CardTest {
      */
     @Test
     public void testCardWithAce() {
-        // Создание карты с тузом
         Card card = new Card("A", "Пики");
         assertEquals("Пики", card.getSuit(), "Масть карты должна быть 'Пики'");
         assertEquals("A", card.getRank(), "Ранг карты должен быть 'A'");

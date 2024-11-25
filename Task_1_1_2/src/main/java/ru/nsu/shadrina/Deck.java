@@ -9,7 +9,7 @@ import java.util.List;
  * Колода инициализируется стандартными мастями и номиналами карт.
  */
 public class Deck {
-    private List<Card> cards; // Колода карт
+    private List<Card> cards;
 
     /**
      * Конструктор колоды. Создает и инициализирует колоду из 52 карт и тасует их.
@@ -17,17 +17,15 @@ public class Deck {
     public Deck() {
         cards = new LinkedList<>();
         
-        // Масти и номиналы для создания стандартной колоды
         String[] suits = {"Пики", "Червы", "Трефы", "Бубны"};
         String[] ranks = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
         
-        // Создаем карты для каждой масти и номинала
         for (String suit : suits) {
             for (String rank : ranks) {
                 cards.add(new Card(rank, suit));
             }
         }
-        shuffleDeck(); // Перетасовываем колоду при создании
+        shuffleDeck();
     }
 
     /**
@@ -44,11 +42,10 @@ public class Deck {
      */
     public Card drawCard() {
         if (cards.isEmpty()) {
-            // Если колода пуста, возвращаем null или можем выбросить исключение
             System.out.println("Колода пуста!");
             return null;
         }
-        return cards.remove(0); // Берем верхнюю карту из колоды
+        return cards.remove(0);
     }
 
     /**

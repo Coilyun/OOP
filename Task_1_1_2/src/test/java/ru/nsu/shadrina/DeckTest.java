@@ -33,10 +33,8 @@ public class DeckTest {
         Deck deck = new Deck();
         Card card = deck.drawCard();
         
-        // Проверка, что карта не пуста
         assertNotNull(card, "Карта не может быть пустой");
         
-        // Проверка, что после извлечения карты в колоде осталось 51 карта
         assertEquals(51, deck.remainingCards(), 
                      "После взятия карты из колоды в ней должно быть 51 карта");
     }
@@ -50,12 +48,10 @@ public class DeckTest {
         Deck deck = new Deck();
         List<Card> cardsBeforeShuffle = new ArrayList<>(deck.getCards());
         
-        // Тасуем колоду
         deck.shuffleDeck();
         
         List<Card> cardsAfterShuffle = deck.getCards();
 
-        // Проверка, что колода изменилась после тасования
         assertNotEquals(cardsBeforeShuffle, cardsAfterShuffle, 
                         "Колода должна измениться после тасования");
     }

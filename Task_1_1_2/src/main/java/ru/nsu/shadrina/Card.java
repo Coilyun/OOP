@@ -5,9 +5,9 @@ package ru.nsu.shadrina;
  * Каждая карта имеет номинал (rank), масть (suit) и значение (value).
  */
 public class Card {
-    private final String rank; // Номинал карты (например, "2", "K", "A")
-    private final String suit; // Масть карты (например, "♠", "♣", "♦", "♥")
-    private final int value;   // Стоимость карты в очках
+    private final String rank;
+    private final String suit;
+    private final int value; 
 
     /**
      * Конструктор для создания новой карты с указанными номиналом и мастью.
@@ -18,7 +18,7 @@ public class Card {
     public Card(String rank, String suit) {
         this.rank = rank;
         this.suit = suit;
-        this.value = calculateValue(rank); // Рассчитываем стоимость карты
+        this.value = calculateValue(rank); 
     }
 
     /**
@@ -31,11 +31,10 @@ public class Card {
      */
     private int calculateValue(String rank) {
         if (rank.equals("A")) {
-            return 11;  // Туз
+            return 11;
         } else if (rank.equals("K") || rank.equals("Q") || rank.equals("J")) {
-            return 10;  // Король, дама, валет
+            return 10;
         } else {
-            // Числовые карты от 2 до 10
             return Integer.parseInt(rank);
         }
     }

@@ -16,12 +16,14 @@ public class Number implements Expression {
         this.value = value;
     }
 
+
     /**
      * Выводит число.
      */
+
     @Override
-    public void print() {
-        System.out.print(value);
+    public String toString() {
+        return String.valueOf(value);
     }
 
     /**

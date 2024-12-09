@@ -18,18 +18,20 @@ public class Mul implements Expression {
         this.right = right;
     }
 
+    @Override
+    public String toString() {
+        return
+                "(" +
+                        left.toString() +
+                        "*" +
+                        right.toString() +
+                        ")";
+    }
+
     /**
      * Выводит выражение в виде строки, представляющей операцию умножения.
      * Формат: (левая_часть * правая_часть)
      */
-    @Override
-    public void print() {
-        System.out.print("(");
-        left.print();
-        System.out.print("*");
-        right.print();
-        System.out.print(")");
-    }
 
     /**
      * Находит производную от выражения умножения по переменной.

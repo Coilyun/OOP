@@ -16,12 +16,14 @@ public class Variable implements Expression {
         this.name = name;
     }
 
+
     /**
      * Выводит имя переменной.
      */
+
     @Override
-    public void print() {
-        System.out.print(name);
+    public String toString() {
+        return name;
     }
 
     /**

@@ -15,8 +15,7 @@ public class ExpressionTest {
     @Test
     public void testAddExpression() {
         Expression e = new Add(new Number(3), new Mul(new Number(2), new Variable("x")));
-        e.print();
-        System.out.println();
+        assertEquals("(3+(2*x))", e.toString());
     }
 
     /**
@@ -26,8 +25,6 @@ public class ExpressionTest {
     public void testDerivativeOfAddExpression() {
         Expression e = new Add(new Number(3), new Mul(new Number(2), new Variable("x")));
         Expression derivative = e.derivative("x");
-        derivative.print();
-        System.out.println();
     }
 
     /**
@@ -47,8 +44,6 @@ public class ExpressionTest {
     public void testDerivativeOfVariable() {
         Expression var = new Variable("x");
         Expression derivative = var.derivative("x");
-        derivative.print();
-        System.out.println();
     }
 
     /**
@@ -58,8 +53,6 @@ public class ExpressionTest {
     public void testDerivativeOfNumber() {
         Expression number = new Number(5);
         Expression derivative = number.derivative("x");
-        derivative.print();
-        System.out.println();
     }
 
     /**
@@ -68,8 +61,6 @@ public class ExpressionTest {
     @Test
     public void testSubExpression() {
         Expression e = new Sub(new Number(5), new Variable("x"));
-        e.print();
-        System.out.println();
     }
 
     /**
@@ -79,8 +70,6 @@ public class ExpressionTest {
     public void testDerivativeOfSubExpression() {
         Expression e = new Sub(new Number(5), new Variable("x"));
         Expression derivative = e.derivative("x");
-        derivative.print();
-        System.out.println();
     }
 
     /**
@@ -99,8 +88,6 @@ public class ExpressionTest {
     @Test
     public void testDivExpression() {
         Expression e = new Div(new Number(10), new Variable("x"));
-        e.print();
-        System.out.println();
     }
 
     /**
@@ -110,8 +97,6 @@ public class ExpressionTest {
     public void testDerivativeOfDivExpression() {
         Expression e = new Div(new Number(10), new Variable("x"));
         Expression derivative = e.derivative("x");
-        derivative.print();
-        System.out.println();
     }
 
     /**

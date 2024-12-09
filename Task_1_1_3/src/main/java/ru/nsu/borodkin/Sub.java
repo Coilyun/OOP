@@ -22,13 +22,10 @@ public class Sub implements Expression {
      * Выводит выражение в виде строки, представляющей операцию разности.
      * Формат: (левая_часть - правая_часть)
      */
+
     @Override
-    public void print() {
-        System.out.print("(");
-        left.print();
-        System.out.print("-");
-        right.print();
-        System.out.print(")");
+    public String toString() {
+        return "(" + left + "-" + right + ")";
     }
 
     /**

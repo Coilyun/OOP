@@ -3,11 +3,7 @@ plugins {
     id 'jacoco'
 }
 
-<<<<<<< HEAD
 group = 'ru.nsu.borodkin'
-=======
-group = 'ru.nsu.shadrina'
->>>>>>> abddce1db6fe25d91f1d20c3faa28abf6423e934
 version = '1.0-SNAPSHOT'
 
 repositories {

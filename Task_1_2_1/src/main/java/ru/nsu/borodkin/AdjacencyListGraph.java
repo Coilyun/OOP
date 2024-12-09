@@ -11,12 +11,10 @@ public class AdjacencyListGraph implements Graph {
 
     @Override
     public void removeVertex(String vertex) {
-        // Удаление вершины из графа
         adjacencyList.remove(vertex);
 
-        // Обновление всех списков соседей остальных вершин
         for (List<String> neighbors : adjacencyList.values()) {
-            neighbors.remove(vertex);  // Удаляем все упоминания этой вершины в списках соседей
+            neighbors.remove(vertex);
         }
     }
 
@@ -41,7 +39,6 @@ public class AdjacencyListGraph implements Graph {
 
     @Override
     public void readFromFile(String filePath) {
-        // Чтение графа из файла
     }
 
     @Override
@@ -63,6 +60,6 @@ public class AdjacencyListGraph implements Graph {
 
     @Override
     public List<String> topologicalSort() {
-        return Collections.emptyList(); // Заглушка
+        return Collections.emptyList();
     }
 }

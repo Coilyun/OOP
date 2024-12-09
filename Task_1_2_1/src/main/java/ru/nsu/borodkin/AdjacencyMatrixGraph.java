@@ -69,7 +69,6 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public void readFromFile(String filePath) {
-        // Чтение графа из файла (реализация зависит от формата файла)
     }
 
     @Override
@@ -96,7 +95,7 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public List<String> topologicalSort() {
-        return Collections.emptyList(); // Заглушка
+        return Collections.emptyList();
     }
 
     private void expandMatrix() {

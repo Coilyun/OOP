@@ -20,11 +20,9 @@ public class IncidenceMatrixGraphTest {
         graph.addVertex("A");
         graph.addVertex("B");
 
-        // Проверяем, что после добавления вершин у "A" нет соседей
         List<String> neighborsA = graph.getNeighbors("A");
         assertTrue(neighborsA.isEmpty(), "'A' не должен иметь соседей");
 
-        // Проверяем, что после добавления вершин у "B" нет соседей
         List<String> neighborsB = graph.getNeighbors("B");
         assertTrue(neighborsB.isEmpty(), "'B' не должен иметь соседей");
     }
@@ -40,7 +38,6 @@ public class IncidenceMatrixGraphTest {
         assertTrue(neighbors.contains("B"), "'A' должен иметь соседа 'B'");
         assertFalse(neighbors.contains("A"), "'A' не должен быть своим собственным соседом");
 
-        // Проверка отсутствия рёбер, если они не были добавлены
         List<String> neighborsB = graph.getNeighbors("B");
         assertTrue(neighborsB.isEmpty(), "'B' не должен иметь соседей, если рёбер нет");
     }
@@ -51,13 +48,10 @@ public class IncidenceMatrixGraphTest {
         graph.addVertex("B");
         graph.addEdge("A", "B");
     
-        // Проверяем, что "A" и "B" имеют рёбра
         assertTrue(graph.getNeighbors("A").contains("B"), "'A' должен иметь соседа 'B'");
     
-        // Удаляем вершину "B"
         graph.removeVertex("B");
     
-        // Проверяем, что "A" больше не имеет соседа "B"
         List<String> neighborsA = graph.getNeighbors("A");
         assertFalse(neighborsA.contains("B"), "'A' не должен иметь соседа 'B' после удаления 'B'");
     }

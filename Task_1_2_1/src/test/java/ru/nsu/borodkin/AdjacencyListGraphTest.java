@@ -21,15 +21,12 @@ class AdjacencyListGraphTest {
         AdjacencyListGraph graph = new AdjacencyListGraph();
         graph.addVertex("A");
         graph.addVertex("B");
-        graph.addEdge("A", "B");  // Ребро от A к B
+        graph.addEdge("A", "B");
 
-        // Проверяем, что ребро A -> B существует
         assertTrue(graph.getNeighbors("A").contains("B"));
 
-        // Удаляем вершину B
         graph.removeVertex("B");
 
-        // Проверяем, что B больше не существует в графе
         assertFalse(graph.getNeighbors("A").contains("B"));  // A не должен иметь соседа B
         assertTrue(graph.getNeighbors("A").isEmpty());  // A не должен иметь других соседей
     }

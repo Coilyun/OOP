@@ -68,7 +68,7 @@ class AdjacencyMatrixGraphTest {
         graph.addVertex("A");
         graph.addVertex("B");
 
-        assertDoesNotThrow(() -> graph.addVertex("C")); // Проверяем, что добавление больше начальной емкости работает
+        assertDoesNotThrow(() -> graph.addVertex("C"));
     }
 
     @Test

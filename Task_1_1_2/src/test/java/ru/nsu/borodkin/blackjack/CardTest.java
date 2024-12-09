@@ -1,5 +1,6 @@
-package ru.nsu.borodkin;
+package ru.nsu.borodkin.blackjack;
 import org.junit.jupiter.api.Test;
+import ru.nsu.borodkin.blackjack.Card;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

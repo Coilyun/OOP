@@ -1,6 +1,8 @@
-package ru.nsu.borodkin;
+package ru.nsu.borodkin.blackjack;
 
 import org.junit.jupiter.api.Test;
+import ru.nsu.borodkin.blackjack.Dealer;
+import ru.nsu.borodkin.blackjack.Deck;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

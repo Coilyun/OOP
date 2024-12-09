@@ -1,4 +1,4 @@
-package ru.nsu.borodkin;
+package ru.nsu.borodkin.blackjack;
 
 import java.util.Collections;
 import java.util.LinkedList;

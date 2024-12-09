@@ -1,4 +1,4 @@
-package ru.nsu.borodkin;
+package ru.nsu.borodkin.blackjack;
 
 import java.util.Scanner;
 
@@ -110,7 +110,7 @@ public class BlackjackGame {
      * Раздача карт для начала раунда.
      * Игрок и дилер получают по две карты из колоды.
      */
-    private void startRound() {
+    void startRound() {
         dealer.receiveCard(deck.drawCard());
         dealer.receiveCard(deck.drawCard());
         player.receiveCard(deck.drawCard());
@@ -126,7 +126,7 @@ public class BlackjackGame {
     /**
      * Ход игрока, где он может выбрать взять карту или остановиться.
      */
-    public void playerTurn() {
+    void playerTurn() {
         Scanner scanner = new Scanner(System.in);
         try {
             while (true) {
@@ -163,7 +163,7 @@ public class BlackjackGame {
     /**
      * Ход дилера, где он берет карты до достижения 17 очков или более.
      */
-    public void dealerTurn() {
+    void dealerTurn() {
         System.out.println("Ход дилера");
         dealer.receiveCard(deck.drawCard());
         System.out.println("Карты дилера: " + dealer.getHand() + " > " + dealer.getScore());
@@ -176,7 +176,7 @@ public class BlackjackGame {
     /**
      * Определяет победителя раунда и обновляет итоговые очки игрока и дилера.
      */
-    public void determineWinner() {
+    void determineWinner() {
         if (player.getScore() > 21 && dealer.getScore() > 21) {
             System.out.println("Ничья! Оба игрока перебрали.");
             playerScore = 0;

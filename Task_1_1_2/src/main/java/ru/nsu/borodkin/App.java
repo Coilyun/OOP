@@ -1,5 +1,7 @@
 package ru.nsu.borodkin;
 
+import ru.nsu.borodkin.blackjack.BlackjackGame;
+
 /**
  * Класс для запуска игры Blackjack.
  * Создает экземпляр игры и инициирует один раунд.
@@ -13,7 +15,7 @@ public class App {
      * @param args аргументы командной строки (не используются)
      */
     public static void main(String[] args) {
-        BlackjackGame game = new BlackjackGame("Никита"); 
+        BlackjackGame game = new BlackjackGame("Никита");
         game.playRound();
     }
 }

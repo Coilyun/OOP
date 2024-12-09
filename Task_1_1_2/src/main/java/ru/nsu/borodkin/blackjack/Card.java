@@ -1,4 +1,4 @@
-package ru.nsu.borodkin;
+package ru.nsu.borodkin.blackjack;
 
 /**
  * Класс, представляющий карту в игре Blackjack.

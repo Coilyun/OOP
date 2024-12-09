@@ -3,11 +3,18 @@ plugins {
     id 'jacoco'
 }
 
-group = 'ru.nsu.shadrina'
+group = 'ru.nsu.borodkin'
 version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+}
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
 
 dependencies {

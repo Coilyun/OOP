@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.nsu.borodkin.AppTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-12-09T04:28:41" hostname="DESKTOP-D9QOF54" time="0.114">
+  <properties/>
+  <testcase name="testMainMethod()" classname="ru.nsu.borodkin.AppTest" time="0.114"/>
+  <system-out><![CDATA[Раунд 1
+Дилер раздал карты
+Никита, ваши карты: [A Червы, 7 Трефы] > 18
+Карты дилера: 8 Червы и <закрытая карта>
+Ваш ход
+Введите “1”, чтобы взять карту, и “0”, чтобы остановиться
+Вы открыли карту: 3 Пики
+Ваши карты: [A Червы, 7 Трефы, 3 Пики] > 21
+Ваш ход
+Введите “1”, чтобы взять карту, и “0”, чтобы остановиться
+Ход дилера
+Карты дилера: [8 Червы, 6 Пики, 2 Трефы] > 16
+Карты дилера: [8 Червы, 6 Пики, 2 Трефы, 5 Бубны] > 21
+Ничья!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

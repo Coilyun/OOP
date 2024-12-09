@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.nsu.borodkin.PlayerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-12-09T04:28:42" hostname="DESKTOP-D9QOF54" time="0.005">
+  <properties/>
+  <testcase name="testAddCard()" classname="ru.nsu.borodkin.PlayerTest" time="0.001"/>
+  <testcase name="testCalculateHandValueWithAce()" classname="ru.nsu.borodkin.PlayerTest" time="0.001"/>
+  <testcase name="testCalculateHandValueWithAceExceeding21()" classname="ru.nsu.borodkin.PlayerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

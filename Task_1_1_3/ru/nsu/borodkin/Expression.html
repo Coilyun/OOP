@@ -127,6 +127,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">Expression</span></pre>
+<div class="block">Интерфейс для математических выражений.</div>
 </li>
 </ul>
 </div>
@@ -150,17 +151,23 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="Expression.html" title="interface in ru.nsu.borodkin">Expression</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#derivative(java.lang.String)">derivative</a></span>&#8203;(java.lang.String&nbsp;var)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Находит производную выражения по переменной.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#eval(java.lang.String)">eval</a></span>&#8203;(java.lang.String&nbsp;variables)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Вычисляет значение выражения.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#print()">print</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Выводит выражение.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -186,6 +193,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>print</h4>
 <pre class="methodSignature">void&nbsp;print()</pre>
+<div class="block">Выводит выражение.</div>
 </li>
 </ul>
 <a id="derivative(java.lang.String)">
@@ -195,6 +203,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>derivative</h4>
 <pre class="methodSignature"><a href="Expression.html" title="interface in ru.nsu.borodkin">Expression</a>&nbsp;derivative&#8203;(java.lang.String&nbsp;var)</pre>
+<div class="block">Находит производную выражения по переменной.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>var</code> - переменная, по которой вычисляется производная</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>производная выражения</dd>
+</dl>
 </li>
 </ul>
 <a id="eval(java.lang.String)">
@@ -204,6 +219,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>eval</h4>
 <pre class="methodSignature">int&nbsp;eval&#8203;(java.lang.String&nbsp;variables)</pre>
+<div class="block">Вычисляет значение выражения.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>variables</code> - строка с значениями переменных</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>результат вычисления</dd>
+</dl>
 </li>
 </ul>
 </li>

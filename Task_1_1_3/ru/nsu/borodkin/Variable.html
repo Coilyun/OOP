@@ -137,6 +137,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">Variable</span>
 extends java.lang.Object
 implements <a href="Expression.html" title="interface in ru.nsu.borodkin">Expression</a></pre>
+<div class="block">Класс, представляющий переменную в выражении.
+ Реализует интерфейс <a href="Expression.html" title="interface in ru.nsu.borodkin"><code>Expression</code></a>.</div>
 </li>
 </ul>
 </div>
@@ -158,7 +160,9 @@ implements <a href="Expression.html" title="interface in ru.nsu.borodkin">Expres
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String)">Variable</a></span>&#8203;(java.lang.String&nbsp;name)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Конструктор для создания переменной.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -181,17 +185,23 @@ implements <a href="Expression.html" title="interface in ru.nsu.borodkin">Expres
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="Expression.html" title="interface in ru.nsu.borodkin">Expression</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#derivative(java.lang.String)">derivative</a></span>&#8203;(java.lang.String&nbsp;var)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Находит производную от переменной.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#eval(java.lang.String)">eval</a></span>&#8203;(java.lang.String&nbsp;variables)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Возвращает значение переменной, переданное в строке.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#print()">print</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Выводит имя переменной.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -224,6 +234,11 @@ implements <a href="Expression.html" title="interface in ru.nsu.borodkin">Expres
 <li class="blockList">
 <h4>Variable</h4>
 <pre>public&nbsp;Variable&#8203;(java.lang.String&nbsp;name)</pre>
+<div class="block">Конструктор для создания переменной.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>name</code> - имя переменной</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -243,6 +258,7 @@ implements <a href="Expression.html" title="interface in ru.nsu.borodkin">Expres
 <li class="blockList">
 <h4>print</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;print()</pre>
+<div class="block">Выводит имя переменной.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Expression.html#print()">print</a></code>&nbsp;in interface&nbsp;<code><a href="Expression.html" title="interface in ru.nsu.borodkin">Expression</a></code></dd>
@@ -256,9 +272,15 @@ implements <a href="Expression.html" title="interface in ru.nsu.borodkin">Expres
 <li class="blockList">
 <h4>derivative</h4>
 <pre class="methodSignature">public&nbsp;<a href="Expression.html" title="interface in ru.nsu.borodkin">Expression</a>&nbsp;derivative&#8203;(java.lang.String&nbsp;var)</pre>
+<div class="block">Находит производную от переменной.
+ Производная от переменной по самой себе равна 1, иначе 0.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Expression.html#derivative(java.lang.String)">derivative</a></code>&nbsp;in interface&nbsp;<code><a href="Expression.html" title="interface in ru.nsu.borodkin">Expression</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>var</code> - переменная, по которой вычисляется производная</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>1, если переменная совпадает, иначе 0</dd>
 </dl>
 </li>
 </ul>
@@ -269,9 +291,14 @@ implements <a href="Expression.html" title="interface in ru.nsu.borodkin">Expres
 <li class="blockList">
 <h4>eval</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;eval&#8203;(java.lang.String&nbsp;variables)</pre>
+<div class="block">Возвращает значение переменной, переданное в строке.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Expression.html#eval(java.lang.String)">eval</a></code>&nbsp;in interface&nbsp;<code><a href="Expression.html" title="interface in ru.nsu.borodkin">Expression</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>variables</code> - строка с значениями переменных в формате "имя=значение"</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>значение переменной</dd>
 </dl>
 </li>
 </ul>

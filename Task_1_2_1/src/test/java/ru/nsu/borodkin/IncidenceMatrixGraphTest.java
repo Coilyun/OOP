@@ -2,81 +2,115 @@ package ru.nsu.borodkin;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-
+import org.junit.jupiter.api.io.TempDir;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class IncidenceMatrixGraphTest {
     private IncidenceMatrixGraph graph;
 
     @BeforeEach
     public void setUp() {
-        graph = new IncidenceMatrixGraph();
+        graph = new IncidenceMatrixGraph(5);  // Инициализация графа с 5 вершинами
     }
 
     @Test
     public void testAddVertex() {
-        graph.addVertex("A");
-        graph.addVertex("B");
+        graph.addVertex(1);
+        graph.addVertex(2);
 
-        List<String> neighborsA = graph.getNeighbors("A");
-        assertTrue(neighborsA.isEmpty(), "'A' не должен иметь соседей");
+        List<Integer> neighborsA = graph.getNeighbors(1);
+        assertTrue(neighborsA.isEmpty(), "'1' не должен иметь соседей");
 
-        List<String> neighborsB = graph.getNeighbors("B");
-        assertTrue(neighborsB.isEmpty(), "'B' не должен иметь соседей");
+        List<Integer> neighborsB = graph.getNeighbors(2);
+        assertTrue(neighborsB.isEmpty(), "'2' не должен иметь соседей");
     }
 
     @Test
     public void testAddEdge() {
-        graph.addVertex("A");
-        graph.addVertex("B");
+        graph.addVertex(1);
+        graph.addVertex(2);
 
-        graph.addEdge("A", "B");
+        graph.addEdge(1, 2);
 
-        List<String> neighbors = graph.getNeighbors("A");
-        assertTrue(neighbors.contains("B"), "'A' должен иметь соседа 'B'");
-        assertFalse(neighbors.contains("A"), "'A' не должен быть своим собственным соседом");
-
-        List<String> neighborsB = graph.getNeighbors("B");
-        assertTrue(neighborsB.isEmpty(), "'B' не должен иметь соседей, если рёбер нет");
+        List<Integer> neighbors = graph.getNeighbors(1);
+        assertTrue(neighbors.contains(2), "'1' должен иметь соседа '2'");
     }
 
     @Test
     public void testRemoveVertex() {
-        graph.addVertex("A");
-        graph.addVertex("B");
-        graph.addEdge("A", "B");
-    
-        assertTrue(graph.getNeighbors("A").contains("B"), "'A' должен иметь соседа 'B'");
-    
-        graph.removeVertex("B");
-    
-        List<String> neighborsA = graph.getNeighbors("A");
-        assertFalse(neighborsA.contains("B"), "'A' не должен иметь соседа 'B' после удаления 'B'");
+        graph.addVertex(1);
+        graph.addVertex(2);
+        graph.addEdge(1, 2);
+
+        assertTrue(graph.getNeighbors(1).contains(2), "'1' должен иметь соседа '2'");
+
+        graph.removeVertex(2);
+
+        List<Integer> neighborsA = graph.getNeighbors(1);
+        assertFalse(neighborsA.contains(2), "'1' не должен иметь соседа '2' после удаления '2'");
     }
-    
 
     @Test
     public void testRemoveEdge() {
-        graph.addVertex("A");
-        graph.addVertex("B");
-        graph.addEdge("A", "B");
+        graph.addVertex(1);
+        graph.addVertex(2);
+        graph.addEdge(1, 2);
 
-        graph.removeEdge("A", "B");
+        graph.removeEdge(1, 2);
 
-        List<String> neighbors = graph.getNeighbors("A");
-        assertFalse(neighbors.contains("B"), "'A' не должен иметь соседа 'B' после удаления ребра");
+        List<Integer> neighbors = graph.getNeighbors(1);
+        assertFalse(neighbors.contains(2), "'1' не должен иметь соседа '2' после удаления ребра");
     }
 
     @Test
-    public void testToString() {
-        graph.addVertex("A");
-        graph.addVertex("B");
-        graph.addEdge("A", "B");
+    public void testTopologicalSort() {
+        // Создаём граф с несколькими вершинами и рёбрами
+        IncidenceMatrixGraph graph = new IncidenceMatrixGraph(4);
 
-        String graphString = graph.toString();
-        assertTrue(graphString.contains("Vertices: [A, B]"), "Строковое представление должно содержать вершины");
-        assertTrue(graphString.contains("Edges:"), "Строковое представление должно содержать рёбра");
+        // Добавляем рёбра для графа
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(0, 2);
+        graph.addEdge(2, 3);
+
+        // Получаем результат топологической сортировки
+        List<Integer> expected = Arrays.asList(0, 1, 2, 3);
+        List<Integer> sorted = graph.topologicalSort();
+
+        assertEquals(expected, sorted);
+    }
+
+    @Test
+    public void testReadFromFile(@TempDir Path tempDir) throws IOException {
+        // Создаём временный файл с данными для графа
+        Path tempFile = tempDir.resolve("test_graph.txt");
+
+        // Запись данных в файл
+        String content = "0 1\n1 2\n2 3\n";
+        try {
+            Files.write(tempFile, content.getBytes());
+        } catch (IOException e) {
+            fail("Не удалось записать в файл: " + tempFile);
+        }
+
+        // Чтение графа из файла
+        graph.readFromFile(tempFile.toString());
+
+        // Проверяем, что граф правильно прочитан из файла
+        List<Integer> neighbors0 = graph.getNeighbors(0);
+        assertTrue(neighbors0.contains(1), "'0' должен иметь соседа '1'");
+
+        List<Integer> neighbors1 = graph.getNeighbors(1);
+        assertTrue(neighbors1.contains(2), "'1' должен иметь соседа '2'");
+
+        List<Integer> neighbors2 = graph.getNeighbors(2);
+        assertTrue(neighbors2.contains(3), "'2' должен иметь соседа '3'");
+
+        Files.delete(tempFile);
     }
 }

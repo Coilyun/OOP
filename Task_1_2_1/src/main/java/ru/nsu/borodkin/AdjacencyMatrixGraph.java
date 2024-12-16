@@ -1,30 +1,40 @@
 package ru.nsu.borodkin;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 public class AdjacencyMatrixGraph implements Graph {
-    private final Map<String, Integer> vertexIndexMap = new HashMap<>();
+    private final Map<Integer, Integer> vertexIndexMap;
     private int[][] matrix;
     private int size;
 
     public AdjacencyMatrixGraph(int initialCapacity) {
-        matrix = new int[initialCapacity][initialCapacity];
-        size = 0;
+        this.vertexIndexMap = new HashMap<>();
+        this.matrix = new int[initialCapacity][initialCapacity];
+        this.size = 0;
     }
 
     @Override
-    public void addVertex(String vertex) {
-        if (vertexIndexMap.containsKey(vertex)) return;
+    public void addVertex(Integer vertex) {
+        if (vertexIndexMap.containsKey(vertex)) {
+            return;
+        }
 
         if (size == matrix.length) {
             expandMatrix();
         }
+
         vertexIndexMap.put(vertex, size++);
     }
 
     @Override
-    public void removeVertex(String vertex) {
+    public void removeVertex(Integer vertex) {
         Integer index = vertexIndexMap.remove(vertex);
-        if (index == null) return;
+        if (index == null) {
+            return;
+        }
 
         for (int i = index; i < size - 1; i++) {
             for (int j = 0; j < size; j++) {
@@ -32,11 +42,15 @@ public class AdjacencyMatrixGraph implements Graph {
                 matrix[j][i] = matrix[j][i + 1];
             }
         }
+
         size--;
     }
 
     @Override
-    public void addEdge(String from, String to) {
+    public void addEdge(Integer from, Integer to) {
+        addVertex(from);
+        addVertex(to);
+
         Integer fromIndex = vertexIndexMap.get(from);
         Integer toIndex = vertexIndexMap.get(to);
         if (fromIndex != null && toIndex != null) {
@@ -45,7 +59,7 @@ public class AdjacencyMatrixGraph implements Graph {
     }
 
     @Override
-    public void removeEdge(String from, String to) {
+    public void removeEdge(Integer from, Integer to) {
         Integer fromIndex = vertexIndexMap.get(from);
         Integer toIndex = vertexIndexMap.get(to);
         if (fromIndex != null && toIndex != null) {
@@ -54,12 +68,14 @@ public class AdjacencyMatrixGraph implements Graph {
     }
 
     @Override
-    public List<String> getNeighbors(String vertex) {
+    public List<Integer> getNeighbors(Integer vertex) {
         Integer index = vertexIndexMap.get(vertex);
-        if (index == null) return Collections.emptyList();
+        if (index == null) {
+            return new ArrayList<>();
+        }
 
-        List<String> neighbors = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry : vertexIndexMap.entrySet()) {
+        List<Integer> neighbors = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : vertexIndexMap.entrySet()) {
             if (matrix[index][entry.getValue()] == 1) {
                 neighbors.add(entry.getKey());
             }
@@ -69,24 +85,39 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public void readFromFile(String filePath) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] edges = line.split(" ");
+                Integer vertex = Integer.parseInt(edges[0]);
+                addVertex(vertex);
+
+                for (int i = 1; i < edges.length; i++) {
+                    Integer connectedVertex = Integer.parseInt(edges[i]);
+                    addEdge(vertex, connectedVertex);
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Error reading file: " + filePath, e);
+        }
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof AdjacencyMatrixGraph)) return false;
+        if (!(obj instanceof AdjacencyMatrixGraph)) {
+            return false;
+        }
         AdjacencyMatrixGraph other = (AdjacencyMatrixGraph) obj;
-
-        return size == other.size && Arrays.deepEquals(matrix, other.matrix);
+        return this.size == other.size && Arrays.deepEquals(this.matrix, other.matrix);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < size; i++) {
-            sb.append(i).append(": ");
-            for (int j = 0; j < size; j++) {
-                sb.append(matrix[i][j]).append(" ");
+        for (Map.Entry<Integer, Integer> entry : vertexIndexMap.entrySet()) {
+            sb.append(entry.getKey()).append(": ");
+            for (int i = 0; i < size; i++) {
+                sb.append(matrix[entry.getValue()][i]).append(" ");
             }
             sb.append("\n");
         }
@@ -94,8 +125,34 @@ public class AdjacencyMatrixGraph implements Graph {
     }
 
     @Override
-    public List<String> topologicalSort() {
-        return Collections.emptyList();
+    public List<Integer> topologicalSort() {
+        List<Integer> result = new ArrayList<>();
+        Map<Integer, Boolean> visited = new HashMap<>();
+
+        for (Integer vertex : vertexIndexMap.keySet()) {
+            visited.put(vertex, false);
+        }
+
+        for (Integer vertex : vertexIndexMap.keySet()) {
+            if (!visited.get(vertex)) {
+                topologicalSortUtil(vertex, visited, result);
+            }
+        }
+
+        return result;
+    }
+
+    private void topologicalSortUtil(Integer vertex, Map<Integer, Boolean> visited, List<Integer> result) {
+        visited.put(vertex, true);
+        Integer vertexIndex = vertexIndexMap.get(vertex);
+
+        for (Map.Entry<Integer, Integer> entry : vertexIndexMap.entrySet()) {
+            if (matrix[vertexIndex][entry.getValue()] == 1 && !visited.get(entry.getKey())) {
+                topologicalSortUtil(entry.getKey(), visited, result);
+            }
+        }
+
+        result.add(0, vertex);
     }
 
     private void expandMatrix() {

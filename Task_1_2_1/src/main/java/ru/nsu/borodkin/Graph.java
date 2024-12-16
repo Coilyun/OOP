@@ -2,13 +2,21 @@ package ru.nsu.borodkin;
 import java.util.List;
 
 public interface Graph {
-    void addVertex(String vertex);
-    void removeVertex(String vertex);
-    void addEdge(String from, String to);
-    void removeEdge(String from, String to);
-    List<String> getNeighbors(String vertex);
+    void addVertex(Integer vertex);
+
+    void removeVertex(Integer vertex);
+    
+    void addEdge(Integer from, Integer to);
+    
+    void removeEdge(Integer from, Integer to);
+    
+    List<Integer> getNeighbors(Integer vertex);
+    
     void readFromFile(String filePath);
+    
     boolean equals(Object obj);
+    
     String toString();
-    List<String> topologicalSort();
+    
+    List<Integer> topologicalSort();
 }

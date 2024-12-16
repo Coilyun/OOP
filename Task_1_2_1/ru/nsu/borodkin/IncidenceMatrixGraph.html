@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -157,7 +157,7 @@ implements <a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">IncidenceMatrixGraph</a></span>()</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">IncidenceMatrixGraph</a></span>&#8203;(int&nbsp;initialVertexCount)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -180,52 +180,47 @@ implements <a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(java.lang.String,java.lang.String)">addEdge</a></span>&#8203;(java.lang.String&nbsp;from,
-       java.lang.String&nbsp;to)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(java.lang.Integer,java.lang.Integer)">addEdge</a></span>&#8203;(java.lang.Integer&nbsp;from,
+       java.lang.Integer&nbsp;to)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addVertex(java.lang.String)">addVertex</a></span>&#8203;(java.lang.String&nbsp;vertex)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addVertex(java.lang.Integer)">addVertex</a></span>&#8203;(java.lang.Integer&nbsp;vertex)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(java.lang.Object&nbsp;o)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(java.lang.Object&nbsp;obj)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>java.util.List&lt;java.lang.String&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNeighbors(java.lang.String)">getNeighbors</a></span>&#8203;(java.lang.String&nbsp;vertex)</code></th>
+<td class="colFirst"><code>java.util.List&lt;java.lang.Integer&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNeighbors(java.lang.Integer)">getNeighbors</a></span>&#8203;(java.lang.Integer&nbsp;vertex)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hashCode()">hashCode</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readFromFile(java.lang.String)">readFromFile</a></span>&#8203;(java.lang.String&nbsp;filePath)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeEdge(java.lang.Integer,java.lang.Integer)">removeEdge</a></span>&#8203;(java.lang.Integer&nbsp;from,
+          java.lang.Integer&nbsp;to)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeEdge(java.lang.String,java.lang.String)">removeEdge</a></span>&#8203;(java.lang.String&nbsp;from,
-          java.lang.String&nbsp;to)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeVertex(java.lang.Integer)">removeVertex</a></span>&#8203;(java.lang.Integer&nbsp;vertex)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i7" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeVertex(java.lang.String)">removeVertex</a></span>&#8203;(java.lang.String&nbsp;vertex)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code>java.util.List&lt;java.lang.String&gt;</code></td>
+<td class="colFirst"><code>java.util.List&lt;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#topologicalSort()">topologicalSort</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
@@ -236,7 +231,7 @@ implements <a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, finalize, getClass, notify, notifyAll, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -254,13 +249,13 @@ implements <a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;()">
+<a id="&lt;init&gt;(int)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>IncidenceMatrixGraph</h4>
-<pre>public&nbsp;IncidenceMatrixGraph()</pre>
+<pre>public&nbsp;IncidenceMatrixGraph&#8203;(int&nbsp;initialVertexCount)</pre>
 </li>
 </ul>
 </li>
@@ -273,70 +268,70 @@ implements <a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="addVertex(java.lang.String)">
+<a id="addVertex(java.lang.Integer)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>addVertex</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;addVertex&#8203;(java.lang.String&nbsp;vertex)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;addVertex&#8203;(java.lang.Integer&nbsp;vertex)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="Graph.html#addVertex(java.lang.String)">addVertex</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></code></dd>
+<dd><code><a href="Graph.html#addVertex(java.lang.Integer)">addVertex</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></code></dd>
 </dl>
 </li>
 </ul>
-<a id="removeVertex(java.lang.String)">
+<a id="removeVertex(java.lang.Integer)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>removeVertex</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;removeVertex&#8203;(java.lang.String&nbsp;vertex)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;removeVertex&#8203;(java.lang.Integer&nbsp;vertex)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="Graph.html#removeVertex(java.lang.String)">removeVertex</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></code></dd>
+<dd><code><a href="Graph.html#removeVertex(java.lang.Integer)">removeVertex</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></code></dd>
 </dl>
 </li>
 </ul>
-<a id="addEdge(java.lang.String,java.lang.String)">
+<a id="addEdge(java.lang.Integer,java.lang.Integer)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>addEdge</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;addEdge&#8203;(java.lang.String&nbsp;from,
-                    java.lang.String&nbsp;to)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;addEdge&#8203;(java.lang.Integer&nbsp;from,
+                    java.lang.Integer&nbsp;to)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="Graph.html#addEdge(java.lang.String,java.lang.String)">addEdge</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></code></dd>
+<dd><code><a href="Graph.html#addEdge(java.lang.Integer,java.lang.Integer)">addEdge</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></code></dd>
 </dl>
 </li>
 </ul>
-<a id="removeEdge(java.lang.String,java.lang.String)">
+<a id="removeEdge(java.lang.Integer,java.lang.Integer)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>removeEdge</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;removeEdge&#8203;(java.lang.String&nbsp;from,
-                       java.lang.String&nbsp;to)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;removeEdge&#8203;(java.lang.Integer&nbsp;from,
+                       java.lang.Integer&nbsp;to)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="Graph.html#removeEdge(java.lang.String,java.lang.String)">removeEdge</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></code></dd>
+<dd><code><a href="Graph.html#removeEdge(java.lang.Integer,java.lang.Integer)">removeEdge</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></code></dd>
 </dl>
 </li>
 </ul>
-<a id="getNeighbors(java.lang.String)">
+<a id="getNeighbors(java.lang.Integer)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getNeighbors</h4>
-<pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.String&gt;&nbsp;getNeighbors&#8203;(java.lang.String&nbsp;vertex)</pre>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Integer&gt;&nbsp;getNeighbors&#8203;(java.lang.Integer&nbsp;vertex)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="Graph.html#getNeighbors(java.lang.String)">getNeighbors</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></code></dd>
+<dd><code><a href="Graph.html#getNeighbors(java.lang.Integer)">getNeighbors</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -359,25 +354,12 @@ implements <a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></
 <ul class="blockList">
 <li class="blockList">
 <h4>equals</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(java.lang.Object&nbsp;o)</pre>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(java.lang.Object&nbsp;obj)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Graph.html#equals(java.lang.Object)">equals</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></code></dd>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
-</dl>
-</li>
-</ul>
-<a id="hashCode()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>hashCode</h4>
-<pre class="methodSignature">public&nbsp;int&nbsp;hashCode()</pre>
-<dl>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code>hashCode</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 </dl>
 </li>
 </ul>
@@ -402,7 +384,7 @@ implements <a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></
 <ul class="blockListLast">
 <li class="blockList">
 <h4>topologicalSort</h4>
-<pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.String&gt;&nbsp;topologicalSort()</pre>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Integer&gt;&nbsp;topologicalSort()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Graph.html#topologicalSort()">topologicalSort</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.borodkin">Graph</a></code></dd>

@@ -25,6 +25,8 @@ public class ExpressionTest {
     public void testDerivativeOfAddExpression() {
         Expression e = new Add(new Number(3), new Mul(new Number(2), new Variable("x")));
         Expression derivative = e.derivative("x");
+        // Производная от (3 + (2 * x)) по x будет 2
+        assertEquals("(0+((0*x)+(2*1)))", derivative.toString());
     }
 
     /**
@@ -34,7 +36,7 @@ public class ExpressionTest {
     public void testEval() {
         Expression e = new Add(new Number(3), new Mul(new Number(2), new Variable("x")));
         int result = e.eval("x = 10;");
-        assertEquals(23, result);
+        assertEquals(23, result);  // 3 + (2 * 10) = 23
     }
 
     /**
@@ -44,6 +46,7 @@ public class ExpressionTest {
     public void testDerivativeOfVariable() {
         Expression var = new Variable("x");
         Expression derivative = var.derivative("x");
+        assertEquals("1", derivative.toString());  // производная от x по x равна 1
     }
 
     /**
@@ -53,6 +56,7 @@ public class ExpressionTest {
     public void testDerivativeOfNumber() {
         Expression number = new Number(5);
         Expression derivative = number.derivative("x");
+        assertEquals("0", derivative.toString());  // производная от числа равна 0
     }
 
     /**
@@ -61,6 +65,7 @@ public class ExpressionTest {
     @Test
     public void testSubExpression() {
         Expression e = new Sub(new Number(5), new Variable("x"));
+        assertEquals("(5-x)", e.toString());
     }
 
     /**
@@ -70,7 +75,9 @@ public class ExpressionTest {
     public void testDerivativeOfSubExpression() {
         Expression e = new Sub(new Number(5), new Variable("x"));
         Expression derivative = e.derivative("x");
+        assertEquals("(0-1)", derivative.toString()); // Производная от (5 - x) по x равна (0 - 1), что дает -1
     }
+
 
     /**
      * Тестирует вычисление значения выражения вычитания.
@@ -79,7 +86,7 @@ public class ExpressionTest {
     public void testEvalSubExpression() {
         Expression e = new Sub(new Number(5), new Variable("x"));
         int result = e.eval("x = 3;");
-        assertEquals(2, result);
+        assertEquals(2, result);  // 5 - 3 = 2
     }
 
     /**
@@ -88,6 +95,7 @@ public class ExpressionTest {
     @Test
     public void testDivExpression() {
         Expression e = new Div(new Number(10), new Variable("x"));
+        assertEquals("(10 / x)", e.toString());
     }
 
     /**
@@ -97,7 +105,9 @@ public class ExpressionTest {
     public void testDerivativeOfDivExpression() {
         Expression e = new Div(new Number(10), new Variable("x"));
         Expression derivative = e.derivative("x");
+        assertEquals("(((0*x)-(10*1)) / (x*x))", derivative.toString()); // Сравнение строкового представления
     }
+
 
     /**
      * Тестирует вычисление значения выражения деления.
@@ -106,6 +116,6 @@ public class ExpressionTest {
     public void testEvalDivExpression() {
         Expression e = new Div(new Number(10), new Variable("x"));
         int result = e.eval("x = 2;");
-        assertEquals(5, result);
+        assertEquals(5, result);  // 10 / 2 = 5
     }
 }

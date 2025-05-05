@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        PizzeriaConfig config = PizzeriaConfig.load("/config.json");
+        PizzeriaConfig config = PizzeriaConfig.load("/pizzeria_config.json");
 
         OrderQueue orderQueue = new OrderQueue(100);
         Warehouse warehouse = new Warehouse(config.warehousesCapacity);

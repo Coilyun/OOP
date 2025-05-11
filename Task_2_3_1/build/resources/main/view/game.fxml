@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="view.GameController"
+      spacing="10"
+      style="-fx-background-color: #2c3e50;">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Верхняя панель с информацией -->
+    <HBox spacing="20" alignment="CENTER">
+        <Label fx:id="scoreLabel" 
+               text="Счет: 0" 
+               style="-fx-font-size: 24px; -fx-text-fill: #ecf0f1; -fx-font-weight: bold;"/>
+    </HBox>
+
+    <!-- Настройки -->
+    <HBox spacing="20" alignment="CENTER">
+        <VBox spacing="5">
+            <Label fx:id="speedLabel" 
+                   text="Скорость: 200" 
+                   style="-fx-text-fill: #ecf0f1;"/>
+            <Slider fx:id="speedSlider" 
+                    prefWidth="150"/>
+        </VBox>
+        <VBox spacing="5">
+            <Label fx:id="foodCountLabel" 
+                   text="Количество еды: 3" 
+                   style="-fx-text-fill: #ecf0f1;"/>
+            <Slider fx:id="foodCountSlider" 
+                    prefWidth="150"/>
+        </VBox>
+    </HBox>
+
+    <!-- Игровое поле -->
+    <GridPane fx:id="gameGrid" 
+              hgap="1" 
+              vgap="1"
+              style="-fx-background-color: #34495e; -fx-padding: 10;"
+              alignment="CENTER"/>
+
+    <!-- Панель управления -->
+    <HBox spacing="20" alignment="CENTER">
+        <Button fx:id="startButton" 
+                text="Старт" 
+                onAction="#handleStartButton"
+                style="-fx-font-size: 16px; -fx-background-color: #27ae60; -fx-text-fill: white; -fx-padding: 10 20;"/>
+        <Button fx:id="newGameButton" 
+                text="Новая игра" 
+                onAction="#handleNewGameButton"
+                style="-fx-font-size: 16px; -fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10 20;"/>
+    </HBox>
+
+</VBox> 

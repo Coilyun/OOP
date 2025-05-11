@@ -1,4 +1,8 @@
-package model;
+package controller;
+
+import model.Cell;
+import model.Food;
+import model.Wall;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,7 +93,7 @@ public class SnakeGame {
             int checkX = isHorizontal ? x + i : x;
             int checkY = isHorizontal ? y : y + i;
             
-            for (Cell cell : snake.getBody()) {
+            for (Cell cell : snake.getSnakeData().getBody()) {
                 if (Math.abs(cell.getX() - checkX) <= WALL_RADIUS && 
                     Math.abs(cell.getY() - checkY) <= WALL_RADIUS) {
                     return true;
@@ -121,8 +125,7 @@ public class SnakeGame {
 
         // Получаем следующую позицию головы
         Cell nextHead = snake.getNextHeadPosition();
-        List<Cell> currentBody = snake.getBody();
-        Cell currentHead = currentBody.get(0);
+        Cell currentHead = snake.getSnakeData().getHead();
         
         // Проверяем все возможные промежуточные позиции при повороте
         for (Wall wall : walls) {
@@ -142,8 +145,8 @@ public class SnakeGame {
             }
             
             // Проверяем промежуточные позиции при повороте
-            if (currentBody.size() > 1) {
-                Cell secondCell = currentBody.get(1);
+            if (snake.getSnakeData().biggerThanOne()) {
+                Cell secondCell = snake.getSnakeData().getSecondCell();
                 
                 // Если змейка поворачивает
                 if (currentHead.getX() != secondCell.getX() && currentHead.getY() != secondCell.getY()) {
@@ -161,13 +164,13 @@ public class SnakeGame {
         snake.move();
         
         // Проверяем столкновение с собой
-        if (snake.collidesWithSelf()) {
+        if (snake.getSnakeData().collidesWithSelf()) {
             isGameOver = true;
             return false;
         }
 
         // Проверяем столкновение с едой
-        Cell head = snake.getBody().get(0);
+        Cell head = snake.getSnakeData().getHead();
         for (int i = 0; i < foods.size(); i++) {
             Food food = foods.get(i);
             if (head.getX() == food.getPosition().getX() && head.getY() == food.getPosition().getY()) {
@@ -199,7 +202,7 @@ public class SnakeGame {
             foodCell = new Cell(x, y);
 
             // Проверка на пересечение со змейкой
-            if (snake.collidesWith(foodCell)) {
+            if (snake.eat(foodCell)) {
                 validPosition = false;
                 continue;
             }

@@ -1,5 +1,7 @@
 package view;
 
+import controller.Snake;
+import controller.SnakeGame;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -19,7 +21,7 @@ import model.*;
 import java.util.List;
 import javafx.scene.shape.Line;
 
-public class GameController {
+public class GameView {
     private static final int CELL_SIZE = 20;
     private static final int MIN_SPEED = 200;
     private static final int MAX_SPEED = 500;
@@ -163,7 +165,7 @@ public class GameController {
         }
         
         // Отрисовка змейки
-        List<Cell> snakeBody = game.getSnake().getBody();
+        List<Cell> snakeBody = game.getSnake().getSnakeData().getBody();
         for (int i = 0; i < snakeBody.size(); i++) {
             Cell cell = snakeBody.get(i);
             Pane pane = (Pane) gameGrid.getChildren().get(cell.getY() * game.getWidth() + cell.getX());
@@ -282,7 +284,7 @@ public class GameController {
         // Анимация проигрыша
         Timeline blinkAnimation = new Timeline(
             new KeyFrame(Duration.seconds(0.2), e -> {
-                List<Cell> snakeBody = game.getSnake().getBody();
+                List<Cell> snakeBody = game.getSnake().getSnakeData().getBody();
                 for (int i = 0; i < snakeBody.size(); i++) {
                     Cell cell = snakeBody.get(i);
                     Pane pane = (Pane) gameGrid.getChildren().get(cell.getY() * game.getWidth() + cell.getX());
@@ -330,7 +332,7 @@ public class GameController {
                 }
             }),
             new KeyFrame(Duration.seconds(0.4), e -> {
-                List<Cell> snakeBody = game.getSnake().getBody();
+                List<Cell> snakeBody = game.getSnake().getSnakeData().getBody();
                 for (int i = 0; i < snakeBody.size(); i++) {
                     Cell cell = snakeBody.get(i);
                     Pane pane = (Pane) gameGrid.getChildren().get(cell.getY() * game.getWidth() + cell.getX());

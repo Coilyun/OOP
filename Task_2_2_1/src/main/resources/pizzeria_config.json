@@ -1,0 +1,6 @@
+{
+    "bakers": [2, 3, 4],
+    "couriers": [1, 2, 3],
+    "warehousesCapacity": 10,
+    "workTime": 10000
+} 
